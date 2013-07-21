@@ -2,7 +2,9 @@
 
 var program = require('commander');
 var fgraph = require('./load_graph');
-var INPUT_FILE_DEFAULT = "./samples/kargerMinCut.txt";
+var rcon = require('./rand_contraction');
+//var INPUT_FILE_DEFAULT = "./samples/kargerMinCut.txt";
+var INPUT_FILE_DEFAULT = "./samples/test2.txt";
 
 function clone(fn) {
     // Workaround for commander.js issue.
@@ -16,7 +18,9 @@ if(require.main == module) {
     .parse(process.argv);
 
   var graph = fgraph.loadGraph(program.file);
-  console.log('before', graph);
+//  console.log('before', graph);
+  var res = rcon.randContract(graph);
+  console.log('result', res);
 } else {
 //  exports.checkHtmlFile = countInversions;
 }
